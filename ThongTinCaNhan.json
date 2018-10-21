@@ -1,0 +1,3 @@
+{"_id":{"$oid":"5bcccef3197faa1154691315"},"Age":"99","Gender":"nam","Adress":"dsbdsbdsbdsbd"}
+{"_id":{"$oid":"5bcccfaa6e132322e86c35e0"},"Name":"Nguyen tuong van","Age":"35","Gender":"nam","Adress":"d12, Da nang"}
+{"_id":{"$oid":"5bcccfd669fd1827782c4bc2"},"Name":"Nguyen tuong van12","Age":"35","Gender":"nam","Adress":"d12, Da nang"}
