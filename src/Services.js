@@ -61,3 +61,25 @@ app.post('/addThongtin', function(req, res){
       
     })
 })
+app.put('/upThongtin', function(req,res){
+    res.writeHead(200,{'Content-Type':'application/x-www-form-urlencoded;charset=utf-8'});
+    var NameEdit = req.body.Name
+        var AgeEdit = req.body.Age
+        var GenderEdit = req.body.Gender
+        var AdressEdit = req.body.Adress
+        var result
+         mongodb.connect(urldb, function(err, db){
+        if(err) throw err;
+        var update = {Age: AgeEdit, Gender: GenderEdit, Adress: AdressEdit}
+        var nameupdate = {Name: NameEdit }
+        var database = db.db('ThongTinCaNhan');
+        database.collection("Thongtin").update(nameupdate, update, function(err, ob){
+            if(err) throw err;
+            console.log('Update Completed');
+            db.close();
+            if(ob.result.n>0)
+            result = 'Update Completed'
+            res.end(result)
+        })
+    })
+})
