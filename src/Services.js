@@ -103,3 +103,20 @@ app.delete('/delThongtin', function(req, res){
         })
 })
 
+app.get("/Thongtin/:Age", function(req, res){
+    res.writeHead(200, { 'Content-Type': 'text/json; charset=utf-8' });
+    var AgeFind = req.params.Age
+    mongodb.connect(urldb, function(err, db){
+        if(err) throw err;
+        var database =  db.db('ThongTinCaNhan');
+        var AgeFindd = {Age: AgeFind}
+        database.collection('Thongtin').findOne(AgeFindd,  function(err, result){
+            if(err) throw err;
+            console.log(result);
+            var json = JSON.stringify(result);
+            res.end(json);
+            db.close();
+        })
+    })
+})
+
