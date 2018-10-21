@@ -83,3 +83,23 @@ app.put('/upThongtin', function(req,res){
         })
     })
 })
+app.delete('/delThongtin', function(req, res){
+    res.writeHead(200,{'Content-Type':'application/x-www-form-urlencoded;charset=utf-8'});
+        var NameDel = req.body.Name
+        var result
+        mongodb.connect(urldb, function(err, db){
+            if(err) throw err; 
+            var database = db.db('ThongTinCaNhan');
+            var delName = {Name: NameDel}
+           
+            database.collection('Thongtin').deleteOne(delName, function(err, ob){
+                if(err) throw err;
+                console.log("Delete Completed");
+                db.close();
+                if(ob.result.n>0)
+                result = 'Delete Completed'
+                res.end(result)
+            })
+        })
+})
+
